@@ -11,6 +11,10 @@
     "jsonwebtoken": "^9.0.2",
     "method-override": "^3.0.0"
   },
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
   "devDependencies": {
     "nodemon": "^3.1.9"
   }
