@@ -40,8 +40,16 @@ router.get("/", async (req, res) => {
 
 router.get("/post/:id", async (req, res) => {
   try {
-    const post = await Post.findById(req.params.id);
-    res.render("post", { post });
+    const slug = req.params.id;
+    const data = await Post.findById({ _id: slug });
+
+    const locals = {
+      title: data.title,
+      description:
+        "A simple tutorial that tackles NodeJs, ExpressJs, and MongoDB",
+    };
+
+    res.render("post", { locals, data });
   } catch (error) {
     console.log(error);
   }
