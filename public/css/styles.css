@@ -299,7 +299,7 @@ img {
   padding: 10px 0;
 }
 
-/* SeachBar */
+/* SearchBar */
 .searchBar {
   visibility: hidden;
   transform: translateY(-100px);
@@ -318,6 +318,7 @@ img {
 .searchBar input {
   margin: 0;
   border: 0;
+  cursor: pointer;
 }
 
 #searchClose {
@@ -326,6 +327,7 @@ img {
   right: 0;
   color: var(--gray-light);
   padding: 15px;
+  cursor: pointer;
 }
 
 .pagination {

@@ -11,6 +11,9 @@ const PORT = process.env.PORT || 4000;
 // Database Connection
 connectDB();
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 app.use(express.static("public"));
 
 // Templating Engine
@@ -19,6 +22,7 @@ app.set("layout", "./layouts/main");
 app.set("view engine", "ejs");
 
 app.use("/", require("./server/routes/main"));
+app.use("/", require("./server/routes/admin"));
 
 // Server
 app.listen(PORT, () => {
