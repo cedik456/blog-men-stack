@@ -88,51 +88,51 @@ router.get("/contact", (req, res) => {
   res.render("contact");
 });
 
-function insertPostData() {
-  Post.insertMany([
-    {
-      title: "The Rise of AI in Hiring",
-      body: "How artificial intelligence is changing the recruitment process.",
-    },
-    {
-      title: "Building a Personal Brand Online",
-      body: "Why having a strong LinkedIn profile and online presence matters.",
-    },
-    {
-      title: "The Gig Economy Boom",
-      body: "How freelancing and contract work are shaping the future of jobs.",
-    },
-    {
-      title: "Interview Questions You Should Prepare For",
-      body: "Common interview questions and how to answer them effectively.",
-    },
-    {
-      title: "How to Negotiate Your Salary",
-      body: "Tips for getting the compensation you deserve.",
-    },
-    {
-      title: "Portfolio vs Resume",
-      body: "Which one matters more for different industries?",
-    },
-    {
-      title: "The Power of Networking",
-      body: "How connections can land you better job opportunities.",
-    },
-    {
-      title: "Side Hustles for Tech Professionals",
-      body: "Ways to earn extra income with your coding skills.",
-    },
-    {
-      title: "Best Time to Apply for Jobs",
-      body: "When companies hire the most and how to take advantage of it.",
-    },
-    {
-      title: "How to Stand Out in a Crowded Job Market",
-      body: "Tips for making your application shine among hundreds of others.",
-    },
-  ]);
-}
+// function insertPostData() {
+//   Post.insertMany([
+//     {
+//       title: "The Rise of AI in Hiring",
+//       body: "How artificial intelligence is changing the recruitment process.",
+//     },
+//     {
+//       title: "Building a Personal Brand Online",
+//       body: "Why having a strong LinkedIn profile and online presence matters.",
+//     },
+//     {
+//       title: "The Gig Economy Boom",
+//       body: "How freelancing and contract work are shaping the future of jobs.",
+//     },
+//     {
+//       title: "Interview Questions You Should Prepare For",
+//       body: "Common interview questions and how to answer them effectively.",
+//     },
+//     {
+//       title: "How to Negotiate Your Salary",
+//       body: "Tips for getting the compensation you deserve.",
+//     },
+//     {
+//       title: "Portfolio vs Resume",
+//       body: "Which one matters more for different industries?",
+//     },
+//     {
+//       title: "The Power of Networking",
+//       body: "How connections can land you better job opportunities.",
+//     },
+//     {
+//       title: "Side Hustles for Tech Professionals",
+//       body: "Ways to earn extra income with your coding skills.",
+//     },
+//     {
+//       title: "Best Time to Apply for Jobs",
+//       body: "When companies hire the most and how to take advantage of it.",
+//     },
+//     {
+//       title: "How to Stand Out in a Crowded Job Market",
+//       body: "Tips for making your application shine among hundreds of others.",
+//     },
+//   ]);
+// }
 
-insertPostData();
+// insertPostData();
 
 module.exports = router;

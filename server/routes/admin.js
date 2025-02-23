@@ -7,6 +7,7 @@ const jwt = require("jsonwebtoken");
 const jwtSecret = process.env.JWT_SECRET;
 
 const adminLayout = "../views/layouts/admin";
+const errorLayout = "../views/layouts/error";
 
 // Check Login
 
@@ -14,7 +15,7 @@ const authMiddleware = (req, res, next) => {
   const token = req.cookies.token;
 
   if (!token) {
-    res.render("admin/404");
+    res.render("admin/404", { layout: errorLayout });
   }
 
   try {
@@ -103,16 +104,58 @@ router.post("/admin/signup", async (req, res) => {
   }
 });
 
-// Dashboard
+// Admin Dashboard
 
 router.get("/admin/dashboard", authMiddleware, async (req, res) => {
-  res.render("admin/dashboard");
+  try {
+    const locals = {
+      title: "Admin Dashboard",
+      description: "A simple blog using Node, Express, and MongoDB",
+    };
+    const data = await Post.find();
+
+    res.render("admin/dashboard", {
+      data,
+      locals,
+      layout: adminLayout,
+    });
+  } catch (error) {
+    console.log(error);
+  }
 });
 
-// 404 Page
+// Add Post (GET)
 
-router.get("/admin/404", async (req, res) => {
-  res.render("admin/404");
+router.get("/add-post", authMiddleware, async (req, res) => {
+  try {
+    const locals = {
+      title: "Admin Dashboard",
+      description: "A simple blog using Node, Express, and MongoDB",
+    };
+
+    const data = await Post.find().sort({ createdAt: -1 }).exec();
+
+    res.render("admin/addPost", {
+      locals,
+      data,
+      layout: adminLayout,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+// Add Post (POST)
+
+router.post("/add-post", async (req, res) => {
+  try {
+    const { title, body } = req.body;
+
+    await Post.create({ title, body });
+    res.redirect("/admin/dashboard");
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 module.exports = router;

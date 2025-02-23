@@ -23,6 +23,7 @@ body {
 
 a {
   color: var(--black);
+  text-decoration: none;
 }
 h1 {
   font-size: var(--font-size-xl);
