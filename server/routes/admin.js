@@ -158,4 +158,42 @@ router.post("/add-post", async (req, res) => {
   }
 });
 
+// Edit Post (GET)
+
+router.get("/edit-post/:id", authMiddleware, async (req, res) => {
+  try {
+    const data = await Post.findOne({ _id: req.params.id });
+
+    res.render("admin/editPost", { data, layout: adminLayout });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+// Edit Post (PUT)
+
+router.put("/edit-post/:id", authMiddleware, async (req, res) => {
+  try {
+    await Post.findByIdAndUpdate(req.params.id, {
+      title: req.body.title,
+      body: req.body.body,
+      updatedAt: Date.now(),
+    });
+    res.redirect(`/admin/dashboard`);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+// Delete Post (DELETE)
+
+router.delete("/delete-post/:id", authMiddleware, async (req, res) => {
+  try {
+    await Post.deleteOne({ _id: req.params.id });
+    res.redirect("/admin/dashboard");
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 module.exports = router;
