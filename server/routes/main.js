@@ -29,6 +29,7 @@ router.get("/", async (req, res) => {
       locals,
       data,
       current: page,
+      currentRoute: "/",
       nextPage: hasNextPage ? nextPage : null,
     });
   } catch (error) {
@@ -49,7 +50,7 @@ router.get("/post/:id", async (req, res) => {
         "A simple tutorial that tackles NodeJs, ExpressJs, and MongoDB",
     };
 
-    res.render("post", { locals, data });
+    res.render("post", { locals, data, currentRoute: `post/${slug}` });
   } catch (error) {
     console.log(error);
   }
@@ -81,11 +82,11 @@ router.post("/search", async (req, res) => {
 });
 
 router.get("/about", (req, res) => {
-  res.render("about");
+  res.render("about", { currentRoute: "/about" });
 });
 
 router.get("/contact", (req, res) => {
-  res.render("contact");
+  res.render("contact", { currentRoute: "/contact" });
 });
 
 // function insertPostData() {

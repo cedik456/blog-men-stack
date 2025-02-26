@@ -7,6 +7,7 @@ const cookieParser = require("cookie-parser");
 const MongoStore = require("connect-mongo");
 
 const connectDB = require("./server/config/db");
+const { isActiveRoute } = require("./server/helpers/routeHelpers"); // importing a helper function
 const session = require("express-session");
 
 const app = express();
@@ -14,6 +15,9 @@ const PORT = process.env.PORT || 4000;
 
 // Database Connection
 connectDB();
+
+// Locals
+app.locals.isActiveRoute = isActiveRoute;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

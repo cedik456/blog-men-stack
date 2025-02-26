@@ -196,4 +196,11 @@ router.delete("/delete-post/:id", authMiddleware, async (req, res) => {
   }
 });
 
+// Admin Logout (GET)
+
+router.get("/logout", authMiddleware, async (req, res) => {
+  res.clearCookie("token");
+  res.redirect("/");
+});
+
 module.exports = router;
